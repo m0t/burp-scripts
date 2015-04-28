@@ -1,4 +1,9 @@
-# These are java classes, being imported using python syntax (Jython magic)
+# what you need to know:
+# - this will intercept http requests based on the destination url, look for a soap security header and update it to a new one
+# - it requires a username and password
+# - it wont probably work for you, soap is complicated and implementation of services differ, but it should be painful 
+#   to tweak just a few lines to make it work (add a nonce? change namespaces? etc..) 
+
 from burp import IBurpExtender
 from burp import IHttpListener
  
@@ -7,7 +12,7 @@ from java.net import URL
 import suds.wsse as s
 import re
 from datetime import datetime
- 
+
 class BurpExtender(IBurpExtender, IHttpListener):
 
     def genSecurityHeader(self, username, password):
