@@ -1,8 +1,4 @@
-# what you need to know:
-# - this will intercept http requests based on the destination url, look for a soap security header and update it to a new one
-# - it requires a username and password
-# - it wont probably work for you, soap is complicated and implementation of services differ, but it should be painful 
-#   to tweak just a few lines to make it work (add a nonce? change namespaces? etc..) 
+#just add header
 
 from burp import IBurpExtender
 from burp import IHttpListener
@@ -30,7 +26,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
         
         url = requestInfo.getUrl().toString()
         #print(url)
-        if url.find('http://close-brothers-premium-finance-sta.sites.ac:80/') < 0 :
+        if url.find('http://localhost:80/') < 0 :
             return
         
         timestamp = datetime.now()
