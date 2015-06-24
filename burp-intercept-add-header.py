@@ -49,7 +49,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
             print('number of Host headers is %d - this is odd, stopping' % len(hostIndex))
             return
         
-        newHost = 'close-brothers-premium-finance-sta.sites.ac'
+        newHost = 'localhost'
         
         if newHeaders[hostIndex[0]].find(newHost) < 0:
             print("Host set to %s - resetting to host %s" % (newHeaders[hostIndex[0]], newHost))
